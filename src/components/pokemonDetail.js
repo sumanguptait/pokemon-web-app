@@ -11,9 +11,10 @@ const pokemonDetails = () => {
   const [showAllMoves, setShowAllMoves] = useState(false);
 
   const fetchPokemon = async () => {
-    let response = await fetch(`/api/pokemon/${id}`);
+    let response = await fetch(`/api/pokemon/1`);
+    console.log("Response: pokeon ", response);
     let data = await response.json();
-    console.log("Data: ", data);
+    console.log("Data: pokeon ", data);
     setPokemon(data);
     setLoading(false);
   };
@@ -23,7 +24,10 @@ const pokemonDetails = () => {
 
   if (loading)
     return (
-      <div className="flex justify-center items-center h-screen ">
+      <div
+        data-testid="loading"
+        className="flex justify-center items-center h-screen "
+      >
         <div className="w-16 h-16 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
       </div>
     );
